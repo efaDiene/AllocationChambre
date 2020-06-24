@@ -1,0 +1,42 @@
+html,body{
+    height: 100%;
+    padding: 0;
+    margin: 0; 
+   
+}
+header{
+    height:5em;
+    background-color: #ede3fc;
+    border-bottom: 4px solid rgb(17, 6, 10);
+}
+#title{
+    
+color: #2926C9;
+}
+#consultez{
+color:black;
+font-size:15px;
+margin-left: 140px;
+text-decoration : underline;
+}
+.etudiantclass{
+margin-left: 20Px;
+    height: 3em;
+    width: 25em;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: solid 2px rgb(23, 107, 216);
+}
+.titrelistes{
+    text-align: center;
+font-size:30px;
+margin-top: 5px;
+color: rgb(13, 100, 214);
+
+
+}
+#btnajouter{
+float: right;
+margin-right: 20em;
+font-weight: bolder;
+}

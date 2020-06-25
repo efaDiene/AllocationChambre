@@ -1,9 +1,25 @@
 <?php
 
-class Chambre{
+class Chambre implements IProjet{
     protected $numChambre;
     protected $typeChambre;
-    protected $numBatiment;
+	protected $numBatiment;
+	protected $etudiant1;
+	protected $etudiant2;
+
+	
+	public function __construct($row=null){
+        if($row!=null){
+            $this->hydrate($row);
+        }
+    }
+
+    public function hydrate($row){
+        $this->numChambre=$row['typeChambre'].$row['numBatiment'];
+        $this->typeChambre=$row['typeChambre'];
+        $this->numBatiment=$row['numBatiment'];
+        
+    }
 
 	public protected getNumChambre() {
 		return this.$numChambre;

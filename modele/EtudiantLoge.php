@@ -1,6 +1,6 @@
 <?php
-class EtudiantBoursier extends Etudiant{
-    protected $typedeBourse;
+class EtudiantLoge extends EtudiantBoursier{
+    protected $numeroChambre;
 
     public function __construct($row=null){
         if($row!=null){
@@ -9,8 +9,7 @@ class EtudiantBoursier extends Etudiant{
     }
 
     public function hydrate($row){
-        $this->typedeBourse=$row['typedeBourse'];
+        $this->numeroChambre=$row['numeroChambre'];
        
     }
-
 }

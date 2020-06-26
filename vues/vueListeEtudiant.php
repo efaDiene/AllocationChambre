@@ -30,26 +30,26 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
         <li class="nav-item  active">
-            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/listerEtudiant">
+            <a class="nav-link" href="<?=urlBase?>etudiantController/listerEtudiant">
               <i class="material-icons ">dashboard</i>
               <p>La liste des étudiants</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant">
+            <a class="nav-link" href="<?=urlBase?>etudiantController/ajouterEtudiant">
               <i class="material-icons">person</i>
               <p>Ajouter un étudiant</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=chambreController/listerChambre">
+            <a class="nav-link" href="<?=urlBase?>chambreController/listerChambre">
               <i class="material-icons">dashboard</i>
               <p>La liste des chambres</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=chambreController/ajouterChambre">
+            <a class="nav-link" href="<?=urlBase?>chambreController/ajouterChambre">
               <i class="material-icons">location_ons</i>
               <p>Ajouter une chambre</p>
             </a>
@@ -115,7 +115,7 @@
                         <td>DD02</td>
                             <td>
                         <div class="btn-group">
-                        <a href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
+                        <a href="<?=urlBase?>etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
                         <i class="fa fa-edit"></i> Modifier </button></a>    
 
                         <a href=""><button type="button" class="btn btn-danger">
@@ -134,7 +134,7 @@
                         <td>DD02</td>
                             <td>
                         <div class="btn-group">
-                        <a href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
+                        <a href="<?=urlBase?>etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
                         <i class="fa fa-edit"></i> Modifier </button></a>    
 
                         <a href=""><button type="button" class="btn btn-danger">
@@ -153,7 +153,7 @@
                         <td>DD02</td>
                             <td>
                         <div class="btn-group">
-                        <a href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
+                        <a href="<?=urlBase?>etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
                         <i class="fa fa-edit"></i> Modifier </button></a>    
 
                         <a href=""><button type="button" class="btn btn-danger">

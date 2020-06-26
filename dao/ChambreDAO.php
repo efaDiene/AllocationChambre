@@ -8,7 +8,7 @@ class ChambreDAO extends manager{
     }
 
     public function Add($obj){
-        $sql="INSERT into $this->nomTable values ";
+        $sql="INSERT into `$this->nomTable` (`numChambre`, `numBatiment`, `typeChambre`) VALUES ('$obj[0]','$obj[1]','$obj[2]') ";
         return $this->executeMaj($sql)!=0;
     }
     

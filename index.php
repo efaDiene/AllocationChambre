@@ -15,14 +15,21 @@
     
 });
 */
+define("urlBase","http://127.0.0.1/AllocationChambre/index.php?url=");
 require_once('./libs/router.php');
 $router= new router();
 $router->route();
 
 
- /*$dao= new ChambreDAO();
- echo "Liste des chambre";
- $dao->Select();
+/*require_once('./dao/chambreDAO.php');
+$dao= new ChambreDAO();
+ echo "ajout des chambre";
+ $dao->Add([
+    "5",
+    "B3",
+    "Individuel" 
+ ]);
+ 
  echo "<br/>Rechereche chambre 1";
  $dao->Search("numChambre","1");
  echo "<br/>Supprimer chambre 2";

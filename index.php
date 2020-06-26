@@ -1,28 +1,33 @@
 <?php
-spl_autoload_register(function($class){
+/*spl_autoload_register(function($class){
     $chemin="./modele/".$class.".php";
-    require_once($chemin);
+    $cheminDAO="./dao/".$class.".php";
+    $cheminLibs="./libs/".$class.".php";
+
+    if(file_exists($chemin)){
+        require_once($chemin);
+    }elseif (file_exists($cheminDAO)) {
+        require_once($cheminDAO);
+    }
+    elseif (file_exists($cheminLibs)) {
+        require_once($cheminLibs);
+    }
+    
 });
+*/
+require_once('./libs/router.php');
+$router= new router();
+$router->route();
 
 
-$etu1= new Etudiant([
-    "prenom"=>"nfd",
-    "nom"=>"diene",
-    "dateNaissance"=>"nfd",
-    "tel"=>"789030204",
-    "email"=>"email",
-]);
-var_dump($etu1);
-$etu1->setMatricule(102);
-echo $etu1->getMatricule();
+ /*$dao= new ChambreDAO();
+ echo "Liste des chambre";
+ $dao->Select();
+ echo "<br/>Rechereche chambre 1";
+ $dao->Search("numChambre","1");
+ echo "<br/>Supprimer chambre 2";
+  $dao->Delete("2");
 
-$etu2= new EtudiantNonBoursier([
-    "adresse"=>"KM"
-]);
-var_dump($etu2);
-
-$etu3= new EtudiantLoge([
-    "numeroChambre"=>"bbc",
-    "typedeBourse"=>"cc"
-]);
-var_dump($etu3);
+echo "<br/>Modifier chambre 3";
+$dao->Modify("3","C3","Individuel");
+*/ 

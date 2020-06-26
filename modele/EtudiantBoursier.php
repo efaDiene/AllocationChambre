@@ -1,6 +1,6 @@
 <?php
 class EtudiantBoursier extends Etudiant{
-    protected $typedeBourse;
+    
 
     public function __construct($row=null){
         if($row!=null){

@@ -3,12 +3,13 @@
 abstract class manager implements IDAO{
     private $PDO=null;
     protected $nomTable;
+    protected $nomClass;
     
     private function connexion(){
-        if ($this->PDO=null) {
+        if ($this->PDO==null) {
             try {
-                $PDO= new PDO("mysql:host=localhost;dbname=allocationchambre","root","")
-                
+                $this->PDO= new PDO('mysql:host=127.0.0.1;dbname=allocationchambre','root','');
+                $this->PDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             } catch (Exception $e) {
                 die("Erreur lors de la connexion au serveur");
             }
@@ -18,36 +19,58 @@ abstract class manager implements IDAO{
     }
     private function fermerConnexion(){
         if ($this->PDO!=null) {
-            $PDO=null
+            $PDO=null;
         }
     }
     
     public function executeSelect($req){
         $this->connexion();
-
-        $nbLigne= $this->PDO->exec();
+        $result= $this->PDO->query($req);
+        
+        $data=[];
+        foreach($result as $row){
+            
+            $data[]= new $this->nomClass($row);
+        }
 
         $this->fermerConnexion();
 
-        return $nbLigne;
+        return $data;
 
     }
 
     public function executeMaj($req){
         $this->connexion();
 
+        $nbLigne= $this->PDO->exec($req);
+
         $this->fermerConnexion();
+
+        return $nbLigne;
     }
 
     public function Delete($id){
-        $sql="delete from $this->nomTable where matricule=`$id`"
+        $sql="DELETE FROM `$this->nomTable` WHERE `numChambre`='$id'";        
+        $result=$this->executeMaj($sql);
+        return $result!=0;
     }
 
     public function Select(){
-        $sql="select * from $this->nomTable";
+        $sql="SELECT * FROM `$this->nomTable`";        
+        $result= $this->executeSelect($sql);
+        var_dump($result); 
     }
 
-    public function SearchByID($id){
-        $sql="select * from $this->nomTable where matricule=`$id`";
+    public function Search($cleDeRecherche,$value){
+        
+        $sql="SELECT * FROM `$this->nomTable` WHERE `$cleDeRecherche`='$value'";
+        
+        $result= $this->executeSelect($sql);
+        var_dump($result);         
+        
     }
+
+
+
+    
 }

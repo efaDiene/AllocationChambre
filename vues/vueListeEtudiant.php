@@ -1,24 +1,11 @@
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./public/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./public/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Alloc'Chambre
@@ -28,41 +15,41 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="../public/assets/css/material-dashboard.min.css?v=2.1.2" rel="stylesheet" />
+  <link href="./public/assets/css/material-dashboard.min.css?v=2.1.2" rel="stylesheet" />
     
 </head>
 
 <body class="">
 
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../public/assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="./public/assets/img/sidebar-1.jpg">
       
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="" class="simple-text logo-normal">
           Alloc'Chambre
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
         <li class="nav-item  active">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/listerEtudiant">
               <i class="material-icons ">dashboard</i>
               <p>La liste des étudiants</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant">
               <i class="material-icons">person</i>
               <p>Ajouter un étudiant</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=chambreController/listerChambre">
               <i class="material-icons">dashboard</i>
               <p>La liste des chambres</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="http://127.0.0.1/AllocationChambre/index.php?url=chambreController/ajouterChambre">
               <i class="material-icons">location_ons</i>
               <p>Ajouter une chambre</p>
             </a>
@@ -117,6 +104,7 @@
                       </thead>
                      
                       <tbody>
+                      
                       <tr>
                         <td>1</td>
                         <td>Modou</td>
@@ -127,7 +115,7 @@
                         <td>DD02</td>
                             <td>
                         <div class="btn-group">
-                        <a href=""><button type="button" class="btn btn-primary mr-3">
+                        <a href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
                         <i class="fa fa-edit"></i> Modifier </button></a>    
 
                         <a href=""><button type="button" class="btn btn-danger">
@@ -146,7 +134,7 @@
                         <td>DD02</td>
                             <td>
                         <div class="btn-group">
-                        <a href=""><button type="button" class="btn btn-primary mr-3">
+                        <a href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
                         <i class="fa fa-edit"></i> Modifier </button></a>    
 
                         <a href=""><button type="button" class="btn btn-danger">
@@ -165,7 +153,7 @@
                         <td>DD02</td>
                             <td>
                         <div class="btn-group">
-                        <a href=""><button type="button" class="btn btn-primary mr-3">
+                        <a href="http://127.0.0.1/AllocationChambre/index.php?url=etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
                         <i class="fa fa-edit"></i> Modifier </button></a>    
 
                         <a href=""><button type="button" class="btn btn-danger">

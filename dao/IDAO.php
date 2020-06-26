@@ -9,7 +9,9 @@ interface IDAO{
 
     public function Delete($id);
 
-    public function Select():
+    public function Select();
  
-    public function SearchByID($id):
+    public function Search($cleDeRecherche,$value);
+
+    
 }

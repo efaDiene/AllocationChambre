@@ -1,6 +1,7 @@
 <?php
 class EtudiantLoge extends EtudiantBoursier{
     protected $numeroChambre;
+    
 
     public function __construct($row=null){
         if($row!=null){

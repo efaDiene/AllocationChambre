@@ -58,15 +58,15 @@ abstract class manager implements IDAO{
     public function Select(){
         $sql="SELECT * FROM `$this->nomTable`";        
         $result= $this->executeSelect($sql);
-        var_dump($result); 
+        return $result;
     }
 
     public function Search($cleDeRecherche,$value){
         
         $sql="SELECT * FROM `$this->nomTable` WHERE `$cleDeRecherche`='$value'";
         
-        $result= $this->executeSelect($sql);
-        var_dump($result);         
+        $result= $this->executeSelect($sql);            
+        return $result;    
         
     }
 

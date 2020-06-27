@@ -24,23 +24,23 @@ class Chambre implements IProjet{
 	}
 
 	public function setNumChambre($numChambre) {
-		this.$numChambre = $numChambre;
+		$this->numChambre = $numChambre;
 	}
 
 	public function getTypeChambre() {
-		return this.$typeChambre;
+		return $this->typeChambre;
 	}
 
 	public function setTypeChambre($typeChambre) {
-		this.$typeChambre = $typeChambre;
+		$this->typeChambre = $typeChambre;
 	}
 
 	public function getNumBatiment() {
-		return this.$numBatiment;
+		return $this->numBatiment;
 	}
 
 	public function setNumBatiment($numBatiment) {
-		this.$numBatiment = $numBatiment;
+		$this->numBatiment = $numBatiment;
 	}
 
 }

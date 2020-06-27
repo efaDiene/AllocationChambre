@@ -85,80 +85,27 @@
                       </thead>
                      
                       <tbody>
+                      <?php
+                      foreach(@$chambre as $value){?>
                       <tr>
-                        <td>1</td>
-                        <td>Individuelle</td>
-                        <td>B2</td>    
-                        <td>
+                      <td><?php echo $value->getNumChambre(); ?></td>
+                      <td><?php echo $value->getTypeChambre(); ?></td>
+                      <td><?php echo $value->getNumBatiment(); ?></td>
+                      <td>
                           <div class="btn-group">
-                          <a href="<?=urlBase?>chambreController/ajouterChambre"><button type="button" class="btn btn-primary mr-3">
+                          <a href="<?=urlBase?>chambreController/modifierChambre"><button type="button" class="btn btn-primary mr-3">
                           <i class="fa fa-edit"></i> Modifier </button></a>    
 
-                          <a href=""><button type="button" class="btn btn-danger">
+                          <a href="<?=urlBase?>chambreController/supprimerChambre"><button type="button" class="btn btn-danger">
                           <i class="fa fa-trash"></i> Supprimer </button>
                           </a>
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Individuelle</td>
-                        <td>B2</td>
-                        <td>
-                          <div class="btn-group">
-                          <a href="<?=urlBase?>chambreController/ajouterChambre"><button type="button" class="btn btn-primary mr-3">
-                          <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                          <a href=""><button type="button" class="btn btn-danger">
-                          <i class="fa fa-trash"></i> Supprimer </button>
-                          </a>
-                          </div>
-                        </td>
-                      </tr>      
-                      <tr>
-                        <td>3</td>
-                        <td>Individuelle</td>
-                        <td>B2</td>
-                        <td>
-                          <div class="btn-group">
-                          <a href="<?=urlBase?>chambreController/ajouterChambre"><button type="button" class="btn btn-primary mr-3">
-                          <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                          <a href=""><button type="button" class="btn btn-danger">
-                          <i class="fa fa-trash"></i> Supprimer </button>
-                          </a>
-                          </div>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td>4</td>
-                        <td>Individuelle</td>
-                        <td>B2</td>
-                        <td>
-                          <div class="btn-group">
-                          <a href=""><button type="button" class="btn btn-primary mr-3">
-                          <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                          <a href=""><button type="button" class="btn btn-danger">
-                          <i class="fa fa-trash"></i> Supprimer </button>
-                          </a>
-                          </div>
-                        </td>
-                      </tr>    
-                      <tr>
-                        <td>5</td>
-                        <td>Partagée</td>
-                        <td>B2</td>
-                        <td>
-                          <div class="btn-group">
-                          <a href=""><button type="button" class="btn btn-primary mr-3">
-                          <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                          <a href=""><button type="button" class="btn btn-danger">
-                          <i class="fa fa-trash"></i> Supprimer </button>
-                          </a>
-                          </div>
-                        </td>
+                      <?php
+                      }
+                      ?>                                          
+                      
                       </tbody>
                     </table>
                   </div>

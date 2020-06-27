@@ -69,7 +69,7 @@
                   <h4 class="card-title">Ajouter une chambre </h4>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form method="POST" action="<?=urlBase?>chambreController/ajouterCh">
                     
                   <div class="row my-5">
                       <div class="col-md-2">                      
@@ -79,12 +79,12 @@
                       <div class="col-md-4">
                         <div class="form-check">
                           <label class="form-check-label">
-                            <input type="radio" name="chambre">Individuel
+                            <input type="radio" name="chambre" value="Individuel">Individuel
                           </label>
                         </div>
                         <div class="form-check">
                           <label class="form-check-label">
-                            <input type="radio" name="chambre">Partagé
+                            <input type="radio" name="chambre" value="Partagé">Partagé
                           </label>
                         </div>
                         
@@ -95,14 +95,14 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Numéro chambre</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">Numéro Batiment</label>
+                          <input type="text" name="numBatiment" class="form-control">
                         </div>
                       </div>                      
                     </div>
-                    <button type="reset" class="btn btn-segondary pull-left">Annuler</button>
+                    <button type="reset" name="annuler" class="btn btn-segondary pull-left">Annuler</button>
 
-                    <button type="submit" class="btn btn-primary pull-right">Valider</button>                    <div class="clearfix"></div>
+                    <button type="submit" name="valider" class="btn btn-primary pull-right">Valider</button>                    <div class="clearfix"></div>
                   </form>
                 </div>
               </div>

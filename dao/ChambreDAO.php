@@ -5,6 +5,7 @@ class ChambreDAO extends manager{
     public function __construct(){
         $this->nomTable="chambre";
         $this->nomClass="Chambre";
+        $this->cle="idChambre";
     }
 
     public function Add($obj){
@@ -13,7 +14,7 @@ class ChambreDAO extends manager{
     }
     
     public function Modify($obj){
-        $sql="UPDATE $this->nomTable SET `numChambre`='$obj[0]',`numBatiment`='$obj[1]',`typeChambre`='$obj[2]' WHERE `numChambre`='$obj[0]'";
+        $sql="UPDATE $this->nomTable SET `numChambre`='{$obj['numChambre']}',`numBatiment`='{$obj['numBatiment']}',`typeChambre`='{$obj[typeChambre]}' WHERE `idChambre`='{$obj['idChambre']}'";
         return $this->executeSelect($sql)!=0;
     }
 

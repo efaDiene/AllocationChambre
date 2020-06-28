@@ -14,7 +14,7 @@ class Etudiant implements IProjet{
     }
 
     public function hydrate($row){
-        $this->matricule=$row['prenom'].$row['prenom'];
+        $this->matricule=$row['matricule'];
         $this->prenom=$row['prenom'];
         $this->nom=$row['nom'];
         $this->dateNaissance=$row['dateNaissance'];

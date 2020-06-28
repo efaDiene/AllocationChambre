@@ -1,6 +1,5 @@
 <?php
-require_once("./dao/ChambreDAO.php");
-require_once("./modele/Chambre.php");
+
 class ChambreController{
     protected $ctrl;
     protected $dao;
@@ -11,13 +10,17 @@ class ChambreController{
     }
 
     private function numC($numBatiment){
+        
         if (strlen($numBatiment)==3) {
            $numC=$numBatiment;
         }elseif(strlen($numBatiment)==2) {
-           $numC=$numBatiment."0";
+           $numC="0".$numBatiment;
         }elseif(strlen($numBatiment)==1) {
-           $numC=$numBatiment."00";
+           $numC="00".$numBatiment;
+        }elseif(strlen($numBatiment)>3) {
+           $numC=$numBatiment[0].$numBatiment[1].$numBatiment[2];
         }
+        $numC=$numC."-".rand(1000,9999);
         return $numC;
     }
 
@@ -35,7 +38,7 @@ class ChambreController{
                
            ]);
            $this->listerChambre();
-           
+            
         }else{
            echo "erreur";
         }
@@ -46,8 +49,34 @@ class ChambreController{
         require_once('./vues/vueAjouterChambre.php');
     }
 
+    public function modifierCh(){
+
+        if(isset($_POST['valider'])){
+            extract($_POST);
+            $this->dao=new ChambreDao();
+             
+            $numC=$this->numC($numBatiment);
+            $this->dao->modify([
+                $numC,
+                $numBatiment,
+                $chambre
+                
+            ]);
+            $this->listerChambre();
+            
+        }else{
+            echo "erreur";
+        }
+    }
+
     public function modifierChambre(){
-        require_once('./vues/vueAjouterChambre.php');
+        extract($_POST);
+        $this->dao=new ChambreDao();
+             
+        $numC=$this->numC($numBatiment);
+        $this->dao->modify($_POST);
+        $this->listerChambre();
+        
     }
 
     public function listerChambre(){
@@ -60,7 +89,7 @@ class ChambreController{
 
     public function supprimerChambre(){
         $this->dao = new chambreDAO();
-        $this->dao->Delete(800);
+        $this->dao->Delete($_POST);
         
         $this->listerChambre();
     }

@@ -4,6 +4,7 @@ abstract class manager implements IDAO{
     private $PDO=null;
     protected $nomTable;
     protected $nomClass;
+    protected $cle;
     
     private function connexion(){
         if ($this->PDO==null) {
@@ -45,12 +46,12 @@ abstract class manager implements IDAO{
         $nbLigne= $this->PDO->exec($req);
 
         $this->fermerConnexion();
-
+        var_dump($nbLigne);
         return $nbLigne;
     }
 
     public function Delete($id){
-        $sql="DELETE FROM `$this->nomTable` WHERE `numChambre`='$id'";        
+        $sql="DELETE FROM `$this->nomTable` WHERE `$this->cle`='{$id['idChambre']}'";        
         $result=$this->executeMaj($sql);
         return $result!=0;
     }

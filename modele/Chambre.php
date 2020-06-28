@@ -1,6 +1,7 @@
 <?php
 
 class Chambre implements IProjet{
+	protected $idChambre;
     protected $numChambre;
     protected $typeChambre;
 	protected $numBatiment;
@@ -13,6 +14,7 @@ class Chambre implements IProjet{
     }
 
     public function hydrate($row){
+		$this->idChambre=$row['idChambre'];
         $this->numChambre=$row['numChambre'];
         $this->typeChambre=$row['typeChambre'];
         $this->numBatiment=$row['numBatiment'];
@@ -43,4 +45,13 @@ class Chambre implements IProjet{
 		$this->numBatiment = $numBatiment;
 	}
 
+
+	public function getIdChambre(){
+		return $this->idChambre;
+	}
+
+	
+	public function setIdChambre($idChambre){
+		$this->idChambre = $idChambre;
+	}
 }

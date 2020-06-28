@@ -98,108 +98,36 @@
                             <th>Nom</th>
                             <th>Date de Naissance</th>    
                             <th>Email</th> 
-                            <th>Téléphone</th>
-                            <th>Numéro de chambre</th>    
+                            <th>Téléphone</th>    
                                                
                       </thead>
                      
                       <tbody>
-                      
+
+                      <?php
+                      foreach(@$etudiant as $value){?>
                       <tr>
-                        <td>1</td>
-                        <td>Modou</td>
-                        <td>Ndiaye</td>
-                        <td>21/05/1991</td>    
-                        <td>modou91@gmail.com</td> 
-                        <td>770000000</td>
-                        <td>DD02</td>
-                            <td>
-                        <div class="btn-group">
-                        <a href="<?=urlBase?>etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
-                        <i class="fa fa-edit"></i> Modifier </button></a>    
+                      <td><?php echo $value->getMatricule(); ?></td>
+                      <td><?php echo $value->getPrenom(); ?></td>
+                      <td><?php echo $value->getNom(); ?></td>
+                      <td><?php echo $value->getDateNaissance(); ?></td>
+                      <td><?php echo $value->getEmail(); ?></td>
+                      <td><?php echo $value->getTel(); ?></td>                      
+                      <td>
+                          <div class="btn-group">
+                          <a href="<?=urlBase?>etudiantController/modifierEtudiant"><button type="button" class="btn btn-primary mr-3">
+                          <i class="fa fa-edit"></i> Modifier </button></a>    
 
-                        <a href=""><button type="button" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> Supprimer </button>
-                        </a>
-                        </div>
+                          <a href="<?=urlBase?>etudiantController/supprimerEtudiant"><button type="button" class="btn btn-danger">
+                          <i class="fa fa-trash"></i> Supprimer </button>
+                          </a>
+                          </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Modou</td>
-                        <td>Ndiaye</td>
-                        <td>21/05/1991</td>    
-                        <td>modou91@gmail.com</td> 
-                        <td>770000000</td>
-                        <td>DD02</td>
-                            <td>
-                        <div class="btn-group">
-                        <a href="<?=urlBase?>etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
-                        <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                        <a href=""><button type="button" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> Supprimer </button>
-                        </a>
-                        </div>
-                        </td>
-                    </tr>      
-                    <tr>
-                        <td>3</td>
-                        <td>Modou</td>
-                        <td>Ndiaye</td>
-                        <td>21/05/1991</td>    
-                        <td>modou91@gmail.com</td> 
-                        <td>770000000</td>
-                        <td>DD02</td>
-                            <td>
-                        <div class="btn-group">
-                        <a href="<?=urlBase?>etudiantController/ajouterEtudiant"><button type="button" class="btn btn-primary mr-3">
-                        <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                        <a href=""><button type="button" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> Supprimer </button>
-                        </a>
-                        </div>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>4</td>
-                        <td>Modou</td>
-                        <td>Ndiaye</td>
-                        <td>21/05/1991</td>    
-                        <td>modou91@gmail.com</td> 
-                        <td>770000000</td>
-                        <td>DD02</td>
-                            <td>
-                        <div class="btn-group">
-                        <a href=""><button type="button" class="btn btn-primary mr-3">
-                        <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                        <a href=""><button type="button" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> Supprimer </button>
-                        </a>
-                        </div>
-                        </td>
-                    </tr>    
-                    <tr>
-                        <td>5</td>
-                        <td>Modou</td>
-                        <td>Ndiaye</td>
-                        <td>21/05/1991</td>    
-                        <td>modou91@gmail.com</td> 
-                        <td>770000000</td>
-                        <td>DD02</td>
-                            <td>
-                        <div class="btn-group">
-                        <a href=""><button type="button" class="btn btn-primary mr-3">
-                        <i class="fa fa-edit"></i> Modifier </button></a>    
-
-                        <a href=""><button type="button" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> Supprimer </button>
-                        </a>
-                        </div>
-                        </td>
-                    </tr>  
+                      </tr>
+                      <?php
+                      }
+                      ?>         
+                                            
                       </tbody>
                     </table>
                   </div>

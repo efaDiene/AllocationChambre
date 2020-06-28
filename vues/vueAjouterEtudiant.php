@@ -70,94 +70,83 @@
                   <h4 class="card-title">Ajouter un étudiant</h4>
                 </div>
                 <div class="card-body">
-                  <form>
-                    
+                <form method="POST" action="<?=urlBase?>etudiantController/ajoutE">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Prénom</h4></label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="prenom" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Nom</h4></label>
-                          <input type="text" class="form-control">
+                          <input type="text" name="nom" class="form-control" required>
                         </div>
                       </div>
-                    </div><div class="row">
-                      
+                    </div><div class="row">                      
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Téléphone</h4></label>
-                          <input type="text" class="form-control">
+                          <input type="tel" name="tel" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Email</h4></label>
-                          <input type="email" class="form-control">
+                          <input type="email" name="email" class="form-control" required>
                         </div>
                       </div>
-                    </div>
-                    
-                    <div class="row my-5">
-                      <div class="col-md-2">                      
-                        <label class="form-check-label"><h4>Type de bourse :</h4>
-                        </label>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="bourse">Bourse entière
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="bourse">Démi bourse
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="bourse">Non boursier
-                          </label>
-                        </div>
-                      </div>
-                      
-                    </div>
-
-                    <div class="row my-5">
-                      <div class="col-md-2">                      
-                        <label class="form-check-label"><h4>Logement universitaire :</h4>
-                        </label>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="logement">Logé
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="logement">Non logé
-                          </label>
-                        </div>
-                        
-                      </div>
-                      
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-6">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><h4>Date de naissance</h4></label>
+                          <input type="date" name="dateNaissance" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">                      
+                        <label class="form-check-label"><h4>Type de bourse :</h4>                       
+                        </label>
+                      
+                        <select class="form-control" name="typeBourse">
+                          <option value="" selected disabled>Selectionner</option>
+                          <option value="Bourse-entiere">Bourse entiere</option>
+                          <option value="Demi-Bourse">Demi-Bourse</option>
+                          <option value="">Non Boursier</option>
+                        </select>
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-6 form-group" >                      
+                        <label class="form-check-label"><h4>Logement universitaire :</h4>
+                        </label>
+                        <select class="form-control" name="logement">
+                          <option value="" selected disabled>Selectionner</option>
+                          <option value="loge">Logé</option>
+                          <option value="">Non logé</option>
+                        </select>
+                      </div>  
+                      <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Numéro chambre</h4></label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>                      
-                    </div>
+                          <input type="text" name="numChambre" class="form-control">
+                          </div>
+                      </div>  
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating hidden"><h4>Adresse</h4></label>
+                          <input type="text" name="adresse" class="form-control">
+                          </div>
+                      </div>             
+                    </div>                    
+                    
                     <button type="reset" class="btn btn-segondary pull-left">Annuler</button>
 
-                    <button type="submit" class="btn btn-primary pull-right">Valider</button>
+                    <button type="submit" name="valider" class="btn btn-primary pull-right">Valider</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

@@ -72,31 +72,23 @@
                   <form method="POST" action="<?=urlBase?>chambreController/ajouterCh">
                     
                   <div class="row my-5">
-                      <div class="col-md-2">                      
+                      <div class="col-md-6">                      
                         <label class="form-check-label">Type de chambre :
                         </label>
+                        <select class="form-control" name="chambre" required>
+                          <option value="" selected disabled>Selectionner</option>
+                          <option value="Partagé">Partagé</option>
+                          <option value="Individuel">Individuel</option>
+                        </select>
                       </div>
-                      <div class="col-md-4">
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="chambre" value="Individuel">Individuel
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="radio" name="chambre" value="Partagé">Partagé
-                          </label>
-                        </div>
-                        
-                      </div>
-                      
+                                            
                     </div>
                     
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Numéro Batiment</label>
-                          <input type="text" name="numBatiment" class="form-control">
+                          <input type="text" name="numBatiment" class="form-control" required>
                         </div>
                       </div>                      
                     </div>

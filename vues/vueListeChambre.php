@@ -96,10 +96,10 @@
                       <td><?php echo $value->getNumBatiment(); ?></td>
                       <td>
                           <div class="btn-group">
-                          <a href="#editEmployeeModal" idChambre="<?= $value->getIdChambre()?>" numChambre="<?=$value->getNumChambre()?>" numBatiment="<?=$value->getNumChambre()?>" typeChambr="<?=$value->getTypeChambre()?>" class="edit modifi" data-toggle="modal"><button type="button" class="btn btn-primary mr-3">
+                          <a href="#editEmployeeModal" idChambre="<?= $value->getIdChambre()?>" numChambre="<?=$value->getNumChambre()?>" numBatiment="<?=$value->getNumBatiment()?>" typeChambre="<?=$value->getTypeChambre()?>" class="edit modifi" data-toggle="modal"><button type="button" class="btn btn-primary mr-3">
                           <i class="fa fa-edit"></i> Modifier </button></a>    
 
-                          <a href="#deleteEmployeeModal" idChambre="<?=$value->getIdChambre()?>" numChambre="<?=$value->getNumChambre()?>" numBatiment="<?=$value->getNumChambre()?>" typeChambr="<?=$value->getTypeChambre()?>" class="delete _delete" data-toggle="modal"><button type="button" class="btn btn-danger">
+                          <a href="#deleteEmployeeModal" idChambre="<?=$value->getIdChambre()?>" class="delete _delete" data-toggle="modal"><button type="button" class="btn btn-danger">
                           <i data-toggle="tooltip" title="delete" class="fa fa-trash"></i> Supprimer </button>
                           </a>
                           </div>
@@ -196,11 +196,14 @@
 $(document).ready(function(){
 
 $('.modifi').on("click",function(){
-   $idChambre= $(this).attr("idChambre")
+   $idChambre= $(this).attr("idChambre");
   $("#idChambre").val($idChambre);
   $numChambre=$(this).attr("numChambre");
   $("#numChambre").val($numChambre);
-  
+  $numBatiment=$(this).attr("numBatiment");
+  $("#numBatiment").val($numBatiment);
+  $typeChambre=$(this).attr("typeChambre");
+  $("#typeChambre").val($typeChambre);
 
   $('.btn_save').on('click',function(){
     $numBatiment=$("#numBatiment").val();

@@ -67,7 +67,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
+                <input type="text" id="recherche" value="" class="form-control" placeholder="Rechercher...">
                 <button type="submit" class="btn btn-default btn-round btn-just-icon">
                   <i class="material-icons">search</i>
                   <div class="ripple-container"></div>
@@ -89,7 +89,7 @@
                   
                 </div>
                 <div class="card-body">
-                  <div class="table-responsive">
+                  <div class="table-responsive" >
                     <table class="table">
                       <thead class=" text-primary">
                       
@@ -102,7 +102,7 @@
                                                
                       </thead>
                      
-                      <tbody>
+                      <tbody id="chercher">
 
                       <?php
                       foreach(@$etudiant as $value){?>
@@ -115,10 +115,10 @@
                       <td><?php echo $value->getTel(); ?></td>                      
                       <td>
                       <div class="btn-group">
-                          <a href="#editEmployeeModal" matricule="<?=$value->getMatricule()?>" nom="<?=$value->getPrenom() ?>" prenom="<?=$value->getNom();?>" dateNaissance="<?=$value->getDateNaissance()?>" email="<?=$value->getEmail() ?>" tel="<?=$value->getTel() ?>" data-toggle="modal"><button type="button" class="btn btn-primary mr-3">
+                          <a href="#editEmployeeModal" matricule="<?=$value->getMatricule()?>" nom="<?=$value->getPrenom() ?>" prenom="<?=$value->getNom();?>" dateNaissance="<?=$value->getDateNaissance()?>" email="<?=$value->getEmail() ?>" tel="<?=$value->getTel() ?>" class="edit modifi" data-toggle="modal"><button type="button" class="btn btn-primary mr-3">
                           <i class="fa fa-edit"></i> Modifier </button></a>    
 
-                          <a href="#deleteEmployeeModal" matricule="<?=$value->getMatricule()?>" data-toggle="modal"><button type="button" class="btn btn-danger">
+                          <a href="#deleteEmployeeModal" matricule="<?=$value->getMatricule()?>" class="delete _delete" data-toggle="modal"><button type="button" class="btn btn-danger">
                           <i class="fa fa-trash"></i> Supprimer </button>
                           </a>
                           </div>
@@ -151,30 +151,30 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-        <div class="row">
+                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Prénom</h4></label>
-                          <input type="text" name="prenom" class="form-control" required>
+                          <input type="text" id="prenom" name="prenom" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Nom</h4></label>
-                          <input type="text" name="nom" class="form-control" required>
+                          <input type="text" id="nom" name="nom" class="form-control" required>
                         </div>
                       </div>
                     </div><div class="row">                      
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Téléphone</h4></label>
-                          <input type="tel" name="tel" class="form-control" required>
+                          <input type="tel" id="tel" name="tel" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Email</h4></label>
-                          <input type="email" name="email" class="form-control" required>
+                          <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -183,7 +183,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating"><h4>Date de naissance</h4></label>
-                          <input type="date" name="dateNaissance" class="form-control" required>
+                          <input type="date" id="dateNaissance" name="dateNaissance" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-6">                      
@@ -197,9 +197,12 @@
                           <option value="">Non Boursier</option>
                         </select>
                         
-                      </div>
+                      </div>                      
                     </div>
-                    </div>
+                    <div class="row" id="divParent">
+                               
+                    </div> 
+                  </div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
 					<input type="submit" class="btn btn-primary btn_save" value="Enregistrer">
@@ -243,7 +246,6 @@ $(document).ready(function(){
 
 $('.modifi').on("click",function(){
   $matricule= $(this).attr("matricule")
-  $("#matricule").val($matricule);
   $prenom=$(this).attr("prenom");
   $("#prenom").val($prenom);  
   $nom=$(this).attr("nom");
@@ -259,14 +261,22 @@ $('.modifi').on("click",function(){
 */
 
   $('.btn_save').on('click',function(){
-    
+    $prenom=$("#prenom").val();
+    $nom=$("#nom").val();
+    $dateNaissance=$("#dateNaissance").val();
+    $email=$("#email").val();
+    $tel=$("#tel").val();
+    $typeBourse=$("#select").val();
+    $logement=$("#select2").val();
+    $adresse=$("#adresse").val();
+    $chambre=$("#chambre").val();
 
     $.ajax({
 
-               type: "POST",
+              type: "POST",
               url: "<?=urlBase?>etudiantController/modifierEtudiant",
               //data: $('form').serialize(),
-              data: {matricule:$matricule,prenom:$prenom,nom:$nom,dateNaissance:$dateNaissance,tel:$tel,email:$email,typeBourse:$typeBourse,},
+              data: {matricule:$matricule,prenom:$prenom,nom:$nom,dateNaissance:$dateNaissance,tel:$tel,email:$email,typeBourse:$typeBourse,logement:$logement,adresse:$adresse,chambre:$chambre},
               dataType: "text",
               success: function (data) {
                   //alert(data);
@@ -306,8 +316,133 @@ $('._delete').on("click",function(){
  
 });
 
-</script>
 
+//declaration et creation de div
+function mychoice(){
+var select = document.getElementById("select");
+var divParent = document.getElementById("divParent");
+
+    var div = document.createElement("div");
+    div.className="col-md-6 form-group";
+    var label = document.createElement("label");
+    label.className="form-check-label";
+    var h4= document.createElement("h4");
+    h4.innerHTML="Logement universitaire :";    
+    var selectLoge = document.createElement("select");
+    selectLoge.className="form-control";
+    selectLoge.name="logement";
+    selectLoge.id="select2";
+    
+    var optionLoge1 = document.createElement("option");
+    optionLoge1.value="";
+    optionLoge1.innerHTML="Selectionner";
+    optionLoge1.setAttribute="disabled";
+    optionLoge1.setAttribute="selected";
+    var optionLoge2 = document.createElement("option");
+    optionLoge2.value="loge";
+    optionLoge2.innerHTML="Logé";
+    
+    var optionLoge3 = document.createElement("option");
+    optionLoge3.value="non-loge";
+    optionLoge3.innerHTML="Non Logé";
+    var div2 = document.createElement("div");
+    div2.className="col-md-6 form-group";
+    var label = document.createElement("label");
+    label.className="form-check-label";
+    var h4Ch= document.createElement("h4");
+    h4Ch.innerHTML="Numéro chambre";
+    var inputCh= document.createElement("input");
+    inputCh.type="text";
+    inputCh.name="numChambre"
+    inputCh.id="chambre"
+    inputCh.className="form-control"
+    var h4Ad= document.createElement("h4");
+    h4Ad.innerHTML="Adresse";
+    var inputAd= document.createElement("input");
+    inputAd.type="text";
+    inputAd.name="adresse"
+    inputAd.id="adresse"
+    inputAd.className="form-control"
+    var choix = myfunction();
+    
+    if((choix=="Bourse-entiere") || (choix=="Demi-Bourse")){       
+     
+        divParent.appendChild(div);
+        div.appendChild(label);
+        div.appendChild(h4);
+        div.appendChild(selectLoge);
+        selectLoge.appendChild(optionLoge1);
+        selectLoge.appendChild(optionLoge2);
+        selectLoge.appendChild(optionLoge3); 
+        divParent.appendChild(div2);
+        selectLoge.addEventListener('change',function(){
+          
+          div2.innerHTML=""; 
+          mychoice2();
+        
+        });
+        
+    }else{
+      divParent.appendChild(div2);
+      div2.appendChild(label);
+      div2.appendChild(h4Ad);
+      div2.appendChild(inputAd);
+    }
+    function mychoice2(){
+      var choix2 = myfunction2(); 
+      if(choix2=="loge"){  
+          div2.appendChild(label);
+          div2.appendChild(h4Ch);
+          div2.appendChild(inputCh);       
+      }
+      
+      else if(choix2=="non-loge"){
+          div2.appendChild(label);
+          div2.appendChild(h4Ad);
+          div2.appendChild(inputAd);
+          
+      }
+    }
+}
+
+
+//fonction pour connaitre le type de reponse choisi    
+function myfunction(){
+    var select = document.getElementById("select");
+    var choix = select.options[select.selectedIndex].value;
+
+    return choix;
+
+}
+function myfunction2(){
+    var select = document.getElementById("select2");
+    var choix = select.options[select.selectedIndex].value;
+
+    return choix;
+
+}
+
+//ecouteur de changement du select
+select.addEventListener('change',function(){
+    divParent.innerHTML="";    
+    mychoice();
+});
+
+
+
+
+</script>
+<script src="./public/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+  $("#recherche").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#chercher tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script> 
   
 </body>
 

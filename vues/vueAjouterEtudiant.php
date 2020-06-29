@@ -126,7 +126,7 @@
                     
                     <button type="reset" class="btn btn-segondary pull-left">Annuler</button>
 
-                    <button type="submit" name="valider" class="btn btn-primary pull-right">Valider</button>
+                    <button  style="float:left;" type="submit" name="valider" class="btn btn-primary pull-right">Valider</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

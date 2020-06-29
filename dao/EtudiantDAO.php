@@ -23,11 +23,18 @@ class EtudiantDAO extends manager{
     }
     
     public function Modify($obj){
-        $sql="UPDATE $this->nomTable set `numChambre`='$obj[0]',`numBatiment`='$obj[1]',`typeChambre`='$obj[2]' WHERE `numChambre`='$obj[0]'";
+        $sql="UPDATE $this->nomTable set `nom`='{$obj['nom']}',`prenom`='{$obj['prenom']}',`email`='{$obj['email']}',`tel`='{$obj['tel']}',`dateNaissance`='{$obj['dateNaissance']}',`adresse`='{$obj['adresse']}' WHERE `matricule`='{$obj['matricule']}'";
         return $this->executeSelect($sql);
     }
 
-    
+    public function ModifyEBL($obj){
+        $sql="UPDATE $this->nomTable set `nom`='{$obj['nom']}',`prenom`='{$obj['prenom']}',`email`='{$obj['email']}',`tel`='{$obj['tel']}',`dateNaissance`='{$obj['dateNaissance']}',`typeBourse`='{$obj['typeBourse']}',`logement`='{$obj['logement']}',`adresse`='{$obj['adresse']}' WHERE `matricule`='{$obj['matricule']}'";
+        echo $sql;
+        return $this->executeSelect($sql);
+    }
 
-
+    public function ModifyEBNL($obj){
+            $sql="UPDATE $this->nomTable set `nom`='{$obj['nom']}',`prenom`='{$obj['prenom']}',`email`='{$obj['email']}',`tel`='{$obj['tel']}',`dateNaissance`='{$obj['dateNaissance']}',`typeBourse`='{$obj['typeBourse']}',`adresse`='{$obj['adresse']}' WHERE `matricule`='{$obj['matricule']}'";
+            return $this->executeSelect($sql);
+    }
 }

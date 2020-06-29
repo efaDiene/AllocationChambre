@@ -69,7 +69,23 @@ class etudiantController{
     }
 
     public function modifierEtudiant(){
-        require_once('./vues/vueAjouterEtudiant.php');
+        
+            $this->dao=new EtudiantDao();
+            $mat=$this->matricule($prenom,$nom);
+            if ($typeBourse=="Bourse-entiere" || $typeBourse=="Demi-Bourse") {
+                
+                if ($logement=="loge") {
+                    $this->dao->Modify($_POST);
+                }else {
+                    $this->dao->ModifyEBNL($_POST);
+                }
+               
+            
+            }else{
+                $this->dao->Modify($_POST);
+            }
+            
+            $this->listerEtudiant();
     }
 
     public function listerEtudiant(){

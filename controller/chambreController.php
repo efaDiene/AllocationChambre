@@ -80,7 +80,7 @@ class ChambreController{
     }
 
     public function listerChambre(){
-        $this->dao= new chambreDAO();
+        $this->dao= new ChambreDAO();
         $chambre=$this->dao->Select();
         $this->dataView["chambre"]=$chambre;
         extract($this->dataView);
@@ -88,7 +88,7 @@ class ChambreController{
     }
 
     public function supprimerChambre(){
-        $this->dao = new chambreDAO();
+        $this->dao = new ChambreDAO();
         $this->dao->Delete($_POST);
         
         $this->listerChambre();

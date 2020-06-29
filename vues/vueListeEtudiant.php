@@ -141,6 +141,137 @@
     </div>
   </div>
 
+<!-- Edit Modal HTML -->
+<div id="editEmployeeModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Modifier Chambre</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+        <div class="form-group">
+						<label>Id Chambre</label>
+						<input type="text" class="form-control" id="idChambre" placeholder="" value="" readonly required>
+					</div>
+          <div class="form-group">
+						<label>Numéro Chambre</label>
+						<input type="text" class="form-control" id="numChambre" placeholder="" value="" readonly required>
+					</div>
+          
+          <div class="form-group">
+          <label>Type de Chambre</label>
+            <select class="form-control" id="typeChambre" required>
+              <option value="" selected disabled>Selectionner</option>
+              <option value="Partagé">Partagé</option>
+              <option value="Individuel">Individuel</option>
+            </select>
+					</div>
+					<div class="form-group">
+						<label>Numéro Batiment</label>
+						<input type="text" class="form-control" id="numBatiment" required>
+					</div>										
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+					<input type="submit" class="btn btn-primary btn_save" value="Enregistrer">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+  
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Supprimer Etudiant</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Voulez vous vraiment supprimer cet etudiant ?</p>
+					<p class="text-warning"><small>Cette action est irréversible !!!</small></p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+					<input type="submit" class="btn btn-danger confirm_delete" value="Supprimer">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+$('.modifi').on("click",function(){
+   $idChambre= $(this).attr("idChambre")
+  $("#idChambre").val($idChambre);
+  $numChambre=$(this).attr("numChambre");
+  $("#numChambre").val($numChambre);
+  
+
+  $('.btn_save').on('click',function(){
+    $numBatiment=$("#numBatiment").val();
+    $typeChambre=$("#typeChambre").val();
+
+    $.ajax({
+
+               type: "POST",
+              url: "<?=urlBase?>chambreController/modifierChambre",
+              //data: $('form').serialize(),
+              data: {idChambre:$idChambre,numChambre:$numChambre,numBatiment:$numBatiment,typeChambre:$typeChambre},
+              dataType: "text",
+              success: function (data) {
+                  //alert(data);
+                }
+
+
+    })
+    
+  })
+
+  
+})
+
+
+
+$('._delete').on("click",function(){
+   $idChambre= $(this).attr("idChambre")
+   //alert($idChambre);
+
+   $('.confirm_delete').on('click',function(){
+    $.ajax({
+
+               type: "POST",
+              url: "<?=urlBase?>chambreController/supprimerChambre",
+              //data: $('form').serialize(),
+              data: {idChambre:$idChambre},
+              dataType: "text",
+              success: function (data) {
+                 // alert(data);
+                }
+
+    })
+  
+})
+
+})
+ 
+});
+
+</script>
+
   
 </body>
 

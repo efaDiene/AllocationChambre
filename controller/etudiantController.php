@@ -73,7 +73,7 @@ class etudiantController{
     }
 
     public function listerEtudiant(){
-        $this->dao= new etudiantDAO();
+        $this->dao= new EtudiantDAO();
         $etudiant=$this->dao->Select();
         $this->dataView["etudiant"]=$etudiant;
         extract($this->dataView);
@@ -81,7 +81,7 @@ class etudiantController{
     }
 
     public function supprimerEtudiant(){
-        $this->dao = new etudiantDAO();
+        $this->dao = new EtudiantDAO();
         $this->dao->Delete("qsss1756");
         
         $this->listerEtudiant();

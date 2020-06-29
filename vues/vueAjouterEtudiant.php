@@ -110,7 +110,7 @@
                         <label class="form-check-label"><h4>Type de bourse :</h4>                       
                         </label>
                       
-                        <select class="form-control" name="typeBourse">
+                        <select class="form-control" name="typeBourse" required>
                           <option value="" selected disabled>Selectionner</option>
                           <option value="Bourse-entiere">Bourse entiere</option>
                           <option value="Demi-Bourse">Demi-Bourse</option>

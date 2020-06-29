@@ -82,7 +82,7 @@ class etudiantController{
 
     public function supprimerEtudiant(){
         $this->dao = new EtudiantDAO();
-        $this->dao->Delete("qsss1756");
+        $this->dao->Delete($_POST);
         
         $this->listerEtudiant();
     }

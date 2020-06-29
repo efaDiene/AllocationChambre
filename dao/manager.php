@@ -51,7 +51,7 @@ abstract class manager implements IDAO{
     }
 
     public function Delete($id){
-        $sql="DELETE FROM `$this->nomTable` WHERE `$this->cle`='{$id['idChambre']}'";        
+        $sql="DELETE FROM `$this->nomTable` WHERE `$this->cle`='{$id[$this->cle]}'";        
         $result=$this->executeMaj($sql);
         return $result!=0;
     }

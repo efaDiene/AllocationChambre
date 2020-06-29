@@ -114,11 +114,11 @@
                       <td><?php echo $value->getEmail(); ?></td>
                       <td><?php echo $value->getTel(); ?></td>                      
                       <td>
-                          <div class="btn-group">
-                          <a href="<?=urlBase?>etudiantController/modifierEtudiant"><button type="button" class="btn btn-primary mr-3">
+                      <div class="btn-group">
+                          <a href="#editEmployeeModal" matricule="<?=$value->getMatricule()?>" nom="<?=$value->getPrenom() ?>" prenom="<?=$value->getNom();?>" dateNaissance="<?=$value->getDateNaissance()?>" email="<?=$value->getEmail() ?>" tel="<?=$value->getTel() ?>" data-toggle="modal"><button type="button" class="btn btn-primary mr-3">
                           <i class="fa fa-edit"></i> Modifier </button></a>    
 
-                          <a href="<?=urlBase?>etudiantController/supprimerEtudiant"><button type="button" class="btn btn-danger">
+                          <a href="#deleteEmployeeModal" matricule="<?=$value->getMatricule()?>" data-toggle="modal"><button type="button" class="btn btn-danger">
                           <i class="fa fa-trash"></i> Supprimer </button>
                           </a>
                           </div>
@@ -147,32 +147,59 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Modifier Chambre</h4>
+					<h4 class="modal-title">Modifier Etudiant</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-        <div class="form-group">
-						<label>Id Chambre</label>
-						<input type="text" class="form-control" id="idChambre" placeholder="" value="" readonly required>
-					</div>
-          <div class="form-group">
-						<label>Numéro Chambre</label>
-						<input type="text" class="form-control" id="numChambre" placeholder="" value="" readonly required>
-					</div>
-          
-          <div class="form-group">
-          <label>Type de Chambre</label>
-            <select class="form-control" id="typeChambre" required>
-              <option value="" selected disabled>Selectionner</option>
-              <option value="Partagé">Partagé</option>
-              <option value="Individuel">Individuel</option>
-            </select>
-					</div>
-					<div class="form-group">
-						<label>Numéro Batiment</label>
-						<input type="text" class="form-control" id="numBatiment" required>
-					</div>										
-				</div>
+        <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><h4>Prénom</h4></label>
+                          <input type="text" name="prenom" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><h4>Nom</h4></label>
+                          <input type="text" name="nom" class="form-control" required>
+                        </div>
+                      </div>
+                    </div><div class="row">                      
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><h4>Téléphone</h4></label>
+                          <input type="tel" name="tel" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><h4>Email</h4></label>
+                          <input type="email" name="email" class="form-control" required>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><h4>Date de naissance</h4></label>
+                          <input type="date" name="dateNaissance" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">                      
+                        <label class="form-check-label"><h4>Type de bourse :</h4>                       
+                        </label>
+                      
+                        <select class="form-control" name="typeBourse" id="select" required>
+                          <option value="" selected disabled>Selectionner</option>
+                          <option value="Bourse-entiere">Bourse entiere</option>
+                          <option value="Demi-Bourse">Demi-Bourse</option>
+                          <option value="">Non Boursier</option>
+                        </select>
+                        
+                      </div>
+                    </div>
+                    </div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
 					<input type="submit" class="btn btn-primary btn_save" value="Enregistrer">
@@ -215,22 +242,31 @@
 $(document).ready(function(){
 
 $('.modifi').on("click",function(){
-   $idChambre= $(this).attr("idChambre")
-  $("#idChambre").val($idChambre);
-  $numChambre=$(this).attr("numChambre");
-  $("#numChambre").val($numChambre);
-  
+  $matricule= $(this).attr("matricule")
+  $("#matricule").val($matricule);
+  $prenom=$(this).attr("prenom");
+  $("#prenom").val($prenom);  
+  $nom=$(this).attr("nom");
+  $("#nom").val($nom);
+  $dateNaissance= $(this).attr("dateNaissance")
+  $("#dateNaissance").val($dateNaissance);
+  $email= $(this).attr("email")
+  $("#email").val($email);
+  $tel=$(this).attr("tel");
+  $("#tel").val($tel);
+  /*$dateNaissance= $(this).attr("dateNaissance")
+  $("#dateNaissance").val($dateNaissance);
+*/
 
   $('.btn_save').on('click',function(){
-    $numBatiment=$("#numBatiment").val();
-    $typeChambre=$("#typeChambre").val();
+    
 
     $.ajax({
 
                type: "POST",
-              url: "<?=urlBase?>chambreController/modifierChambre",
+              url: "<?=urlBase?>etudiantController/modifierEtudiant",
               //data: $('form').serialize(),
-              data: {idChambre:$idChambre,numChambre:$numChambre,numBatiment:$numBatiment,typeChambre:$typeChambre},
+              data: {matricule:$matricule,prenom:$prenom,nom:$nom,dateNaissance:$dateNaissance,tel:$tel,email:$email,typeBourse:$typeBourse,},
               dataType: "text",
               success: function (data) {
                   //alert(data);
@@ -247,16 +283,16 @@ $('.modifi').on("click",function(){
 
 
 $('._delete').on("click",function(){
-   $idChambre= $(this).attr("idChambre")
+   $matricule= $(this).attr("matricule")
    //alert($idChambre);
 
    $('.confirm_delete').on('click',function(){
     $.ajax({
 
                type: "POST",
-              url: "<?=urlBase?>chambreController/supprimerChambre",
+              url: "<?=urlBase?>etudiantController/supprimerEtudiant",
               //data: $('form').serialize(),
-              data: {idChambre:$idChambre},
+              data: {matricule:$matricule},
               dataType: "text",
               success: function (data) {
                  // alert(data);

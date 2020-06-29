@@ -70,7 +70,7 @@
                   <h4 class="card-title">Ajouter un étudiant</h4>
                 </div>
                 <div class="card-body">
-                <form method="POST" action="<?=urlBase?>etudiantController/ajoutE">
+                <form method="POST" id="form-quest" action="<?=urlBase?>etudiantController/ajoutE">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
@@ -110,7 +110,7 @@
                         <label class="form-check-label"><h4>Type de bourse :</h4>                       
                         </label>
                       
-                        <select class="form-control" name="typeBourse" required>
+                        <select class="form-control" name="typeBourse" id="select" required>
                           <option value="" selected disabled>Selectionner</option>
                           <option value="Bourse-entiere">Bourse entiere</option>
                           <option value="Demi-Bourse">Demi-Bourse</option>
@@ -120,28 +120,8 @@
                       </div>
                     </div>
                     
-                    <div class="row">
-                      <div class="col-md-6 form-group" >                      
-                        <label class="form-check-label"><h4>Logement universitaire :</h4>
-                        </label>
-                        <select class="form-control" name="logement">
-                          <option value="" selected disabled>Selectionner</option>
-                          <option value="loge">Logé</option>
-                          <option value="">Non logé</option>
-                        </select>
-                      </div>  
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><h4>Numéro chambre</h4></label>
-                          <input type="text" name="numChambre" class="form-control">
-                          </div>
-                      </div>  
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating hidden"><h4>Adresse</h4></label>
-                          <input type="text" name="adresse" class="form-control">
-                          </div>
-                      </div>             
+                    <div class="row" id="divParent">
+                               
                     </div>                    
                     
                     <button type="reset" class="btn btn-segondary pull-left">Annuler</button>
@@ -155,6 +135,121 @@
       
     </div>
   </div>
+
+<script>
+
+//declaration et creation de div
+function mychoice(){
+var select = document.getElementById("select");
+var divParent = document.getElementById("divParent");
+
+    var div = document.createElement("div");
+    div.className="col-md-6 form-group";
+    var label = document.createElement("label");
+    label.className="form-check-label";
+    var h4= document.createElement("h4");
+    h4.innerHTML="Logement universitaire :";    
+    var selectLoge = document.createElement("select");
+    selectLoge.className="form-control";
+    selectLoge.name="logement";
+    selectLoge.id="select2";
+    
+    var optionLoge1 = document.createElement("option");
+    optionLoge1.value="";
+    optionLoge1.innerHTML="Selectionner";
+    optionLoge1.setAttribute="disabled";
+    optionLoge1.setAttribute="selected";
+    var optionLoge2 = document.createElement("option");
+    optionLoge2.value="loge";
+    optionLoge2.innerHTML="Logé";
+    
+    var optionLoge3 = document.createElement("option");
+    optionLoge3.value="non-loge";
+    optionLoge3.innerHTML="Non Logé";
+    var div2 = document.createElement("div");
+    div2.className="col-md-6 form-group";
+    var label = document.createElement("label");
+    label.className="form-check-label";
+    var h4Ch= document.createElement("h4");
+    h4Ch.innerHTML="Numéro chambre";
+    var inputCh= document.createElement("input");
+    inputCh.type="text";
+    inputCh.name="numChambre"
+    inputCh.className="form-control"
+    var h4Ad= document.createElement("h4");
+    h4Ad.innerHTML="Adresse";
+    var inputAd= document.createElement("input");
+    inputAd.type="text";
+    inputAd.name="adresse"
+    inputAd.className="form-control"
+    var choix = myfunction();
+    
+    if((choix=="Bourse-entiere") || (choix=="Demi-Bourse")){       
+     
+        divParent.appendChild(div);
+        div.appendChild(label);
+        div.appendChild(h4);
+        div.appendChild(selectLoge);
+        selectLoge.appendChild(optionLoge1);
+        selectLoge.appendChild(optionLoge2);
+        selectLoge.appendChild(optionLoge3); 
+        divParent.appendChild(div2);
+        selectLoge.addEventListener('change',function(){
+          
+          div2.innerHTML=""; 
+          mychoice2();
+        
+        });
+        
+    }else{
+      divParent.appendChild(div2);
+      div2.appendChild(label);
+      div2.appendChild(h4Ad);
+      div2.appendChild(inputAd);
+    }
+    function mychoice2(){
+      var choix2 = myfunction2(); 
+      if(choix2=="loge"){  
+          div2.appendChild(label);
+          div2.appendChild(h4Ch);
+          div2.appendChild(inputCh);       
+      }
+      
+      else if(choix2=="non-loge"){
+          div2.appendChild(label);
+          div2.appendChild(h4Ad);
+          div2.appendChild(inputAd);
+          
+      }
+    }
+}
+
+
+//fonction pour connaitre le type de reponse choisi    
+function myfunction(){
+    var select = document.getElementById("select");
+    var choix = select.options[select.selectedIndex].value;
+
+    return choix;
+
+}
+function myfunction2(){
+    var select = document.getElementById("select2");
+    var choix = select.options[select.selectedIndex].value;
+
+    return choix;
+
+}
+
+//ecouteur de changement du select
+select.addEventListener('change',function(){
+    divParent.innerHTML="";    
+    mychoice();
+});
+
+
+
+</script>
 
 </body>
 

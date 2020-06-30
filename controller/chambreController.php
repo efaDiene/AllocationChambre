@@ -28,7 +28,7 @@ class ChambreController{
 
         if(isset($_POST['valider'])){
            extract($_POST);
-           $this->dao=new ChambreDao();
+           $this->dao=new ChambreDAO();
             
            $numC=$this->numC($numBatiment);
            $this->dao->Add([
@@ -49,29 +49,10 @@ class ChambreController{
         require_once('./vues/vueAjouterChambre.php');
     }
 
-    public function modifierCh(){
-
-        if(isset($_POST['valider'])){
-            extract($_POST);
-            $this->dao=new ChambreDao();
-             
-            $numC=$this->numC($numBatiment);
-            $this->dao->modify([
-                $numC,
-                $numBatiment,
-                $chambre
-                
-            ]);
-            $this->listerChambre();
-            
-        }else{
-            echo "erreur";
-        }
-    }
-
+    
     public function modifierChambre(){
         extract($_POST);
-        $this->dao=new ChambreDao();
+        $this->dao=new ChambreDAO();
              
         $numC=$this->numC($numBatiment);
         $this->dao->modify($_POST);

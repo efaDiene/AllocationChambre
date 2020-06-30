@@ -299,7 +299,7 @@ $('._delete').on("click",function(){
    $('.confirm_delete').on('click',function(){
     $.ajax({
 
-               type: "POST",
+              type: "POST",
               url: "<?=urlBase?>etudiantController/supprimerEtudiant",
               //data: $('form').serialize(),
               data: {matricule:$matricule},

@@ -46,7 +46,7 @@ class Router{
                 }else {
                     $controller="./controller/etudiantController.php";
                     require_once($controller);
-                    $this->ctrl= new EtudiantController();
+                    $this->ctrl= new etudiantController();
                     $this->ctrl->listerEtudiant();
                 }    
 

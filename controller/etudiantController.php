@@ -13,7 +13,7 @@ class etudiantController{
     public function ajoutE(){
         if(isset($_POST['valider'])){
             extract($_POST);
-            $this->dao=new EtudiantDao();
+            $this->dao=new EtudiantDAO();
             $mat=$this->matricule($prenom,$nom);
             if ($typeBourse=="Bourse-entiere" || $typeBourse=="Demi-Bourse") {
                 
@@ -70,7 +70,7 @@ class etudiantController{
 
     public function modifierEtudiant(){
         
-            $this->dao=new EtudiantDao();
+            $this->dao=new EtudiantDAO();
             $mat=$this->matricule($prenom,$nom);
             if ($typeBourse=="Bourse-entiere" || $typeBourse=="Demi-Bourse") {
                 
